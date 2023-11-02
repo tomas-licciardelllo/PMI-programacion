@@ -18,7 +18,7 @@ typedef struct
 {
     char nombre[31];
     char id[11];
-   //int cuantos_combos;
+    //int cuantos_combos;
     //varianle de arriba no posee utilidad teniendo el arreglo
     int forma_pago;
     float sub_total;
@@ -91,19 +91,24 @@ void id(Pedido *a)
     cadena[10] = '\0';
 
     // Imprimir la cadena generada
-    printf("Cadena: %s\n", cadena);
+    //printf("Cadena: %s\n", cadena);
 
     strcpy((*a).id, cadena);
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
 void combo(Pedido *a, int cual, int cuantos)
 {
     (*a).arreglo_para_combos[cual]=cuantos;
 }
 
 
-void pago (Pedido *a, int eleccion)
+void set_pago(Pedido *a, int eleccion)
 {
     (*a).forma_pago=eleccion;
 }
@@ -136,12 +141,23 @@ void total (Pedido *a)
     }
 }
 
+<<<<<<< HEAD
 
 void lugar (Pedido *a, int opcion)
+=======
+void set_lugar (Pedido *a, int opcion)
+>>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
 {
     (*a).donde_consume=opcion;
 }
 
+<<<<<<< HEAD
+=======
+int get_lugar (Pedido a)
+{
+    return a.donde_consume;
+}
+>>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
 
 void fecha_del_pedido(Pedido *a)
 {
@@ -171,5 +187,19 @@ void condicion (Pedido *a, int info)
         (*a).entregado=1;
     }
 }
+
+char * get_id_pedido (Pedido a)
+{
+    char *p;
+    p=(char *)malloc(strlen(a.id)+1);
+    if(p==NULL)
+        return ("1");
+    else
+    {
+        strcpy(p,a.id);
+        return p;
+    }
+}
+
 
 #endif // PEDIDO_H_INCLUDED
