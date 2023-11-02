@@ -18,7 +18,7 @@ typedef struct
 {
     char nombre[31];
     char id[11];
-   //int cuantos_combos;
+    //int cuantos_combos;
     //varianle de arriba no posee utilidad teniendo el arreglo
     int forma_pago;
     float sub_total;
@@ -85,10 +85,13 @@ void id(Pedido *a)
     cadena[10] = '\0';
 
     // Imprimir la cadena generada
-    printf("Cadena: %s\n", cadena);
+    //printf("Cadena: %s\n", cadena);
 
     strcpy((*a).id, cadena);
 }
+
+
+
 
 void combo(Pedido *a, int cual, int cuantos)
 {
@@ -126,10 +129,16 @@ void total (Pedido *a)
     }
 }
 
-void lugar (Pedido *a, int opcion)
+void set_lugar (Pedido *a, int opcion)
 {
     (*a).donde_consume=opcion;
 }
+
+int get_lugar (Pedido a)
+{
+    return a.donde_consume;
+}
+
 void fecha_del_pedido(Pedido *a)
 {
 
@@ -156,5 +165,19 @@ void condicion (Pedido *a, int info)
         (*a).entregado=1;
     }
 }
+
+char * get_id_pedido (Pedido a)
+{
+    char *p;
+    p=(char *)malloc(strlen(a.id)+1);
+    if(p==NULL)
+        return ("1");
+    else
+    {
+        strcpy(p,a.id);
+        return p;
+    }
+}
+
 
 #endif // PEDIDO_H_INCLUDED

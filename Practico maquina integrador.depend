@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1698807754 source:c:\users\tomil\onedrive\escritorio\practico maquina integrador\main.c
+1698811233 source:c:\users\tomil\onedrive\escritorio\practico maquina integrador\main.c
 	<stdio.h>
 	<time.h>
 	"lista.h"
@@ -7,14 +7,34 @@
 1698792139 c:\users\tomil\onedrive\escritorio\practico maquina integrador\lista.h
 	"pedido.h"
 
-1698792175 c:\users\tomil\onedrive\escritorio\practico maquina integrador\pedido.h
+1698810719 c:\users\tomil\onedrive\escritorio\practico maquina integrador\pedido.h
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"TDA_Combo.h"
 
-1698794460 c:\users\tomil\onedrive\escritorio\practico maquina integrador\tda_combo.h
+1698811046 c:\users\tomil\onedrive\escritorio\practico maquina integrador\tda_combo.h
+	<stdio.h>
+	<malloc.h>
+	<string.h>
+
+1698955489 source:c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\main.c
+	<stdio.h>
+	<time.h>
+	"lista.h"
+
+1698792139 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\lista.h
+	"pedido.h"
+
+1698948399 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\pedido.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"TDA_Combo.h"
+
+1698930814 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\tda_combo.h
 	<stdio.h>
 	<malloc.h>
 	<string.h>
