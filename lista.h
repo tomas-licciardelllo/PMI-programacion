@@ -29,8 +29,11 @@ void InicializarLista(lista_pedido *lista){
 void InsertarEnLista(lista_pedido *lista, Pedido p){
 
     Nodo *nuevoNodo;
-    nuevoNodo=(Nodo*)malloc(sizeof(Nodo)); // no haria falta el control de asignación de memoria?
-
+    nuevoNodo=(Nodo*)malloc(sizeof(Nodo)); // hecho el control de asignacion de memoria
+    if(nuevoNodo==NULL){
+        printf("Error al asignar memoria al nuevoNodo");
+        exit(1);
+    }else{
         if(lista->cursor==lista->acceso){
 
             lista->acceso=nuevoNodo;
@@ -44,8 +47,9 @@ void InsertarEnLista(lista_pedido *lista, Pedido p){
                 (lista->cursor)=nuevoNodo;
         }
         (lista->cursor)->vipd=p; //inservo el vehiculo en la vipd del nuevo nodo
-
     }
+
+}
 
 
 
@@ -54,7 +58,7 @@ void SupressLista(lista_pedido *lista){
     if(lista->cursor == lista->acceso){
 
         lista->acceso=(lista->cursor)->punterosiguiente;
-        free(lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR
+        free(lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR //seria necesario
         lista->cursor=lista->acceso;
         lista->aux=lista->acceso;
      }

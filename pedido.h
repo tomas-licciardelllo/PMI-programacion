@@ -30,6 +30,7 @@ typedef struct
     int arreglo_para_combos[10];
 }Pedido;
 
+
 void init(Pedido *a)
 {
     int i;
@@ -48,20 +49,25 @@ void init(Pedido *a)
     }
 }
 
+
 // Función para generar un carácter aleatorio en minúsculas
 char generarCaracterAleatorio() {
     return 'a' + (rand() % 26);
 }
+
 
 // Función para generar un dígito aleatorio
 char generarDigitoAleatorio() {
     return '0' + (rand() % 10);
 }
 
+
 void set_nombre(Pedido *a, char n[])
 {
     strcpy((*a).nombre, n);
 }
+
+
 void id(Pedido *a)
 {
     int i;
@@ -90,15 +96,18 @@ void id(Pedido *a)
     strcpy((*a).id, cadena);
 }
 
+
 void combo(Pedido *a, int cual, int cuantos)
 {
     (*a).arreglo_para_combos[cual]=cuantos;
 }
 
+
 void pago (Pedido *a, int eleccion)
 {
     (*a).forma_pago=eleccion;
 }
+
 
 void subtotal(Pedido *a, float descuento)
 {
@@ -114,6 +123,7 @@ void subtotal(Pedido *a, float descuento)
     (*a).sub_total=(*a).sub_total-descuento;
 }
 
+
 void total (Pedido *a)
 {
     if((*a).donde_consume==0)
@@ -126,10 +136,13 @@ void total (Pedido *a)
     }
 }
 
+
 void lugar (Pedido *a, int opcion)
 {
     (*a).donde_consume=opcion;
 }
+
+
 void fecha_del_pedido(Pedido *a)
 {
 
@@ -145,6 +158,8 @@ void fecha_del_pedido(Pedido *a)
     (*a).fecha_pedido.mes = infoTiempo->tm_mon + 1;  // Sumar 1 porque tm_mon es 0-based
     (*a).fecha_pedido.ano = infoTiempo->tm_year + 1900;  // Sumar 1900 porque tm_year es el número de años desde 1900
 }
+
+
 void condicion (Pedido *a, int info)
 {
     if(info=0)

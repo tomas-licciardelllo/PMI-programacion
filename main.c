@@ -3,7 +3,18 @@
 #include "lista.h"
 
 
+void modifica_pago(Pedido *a, char modif[]){//incompleta
+/** j) Modificar la forma de pago de un pedido según su idpedido */
+    init(*a);//cual seria el error??
+    ResetCursores(*a);
+    while(!isOos){
+        if(strcmp(get_id_pedido(a.),modif)==0)
+        ForwardCursores(*a);
+    }
+    CopyLista()
+    //modifico el nodo
 
+}
 
 void calcular_totales(Pedido *a, Combos todos[])
 {
@@ -135,7 +146,7 @@ int main()
 
     printf("------------------Menu---------------------------\n");
     printf("<1>Ingresar un pedido.\n");
-    printf("<2>Busacar un pedido por el ID.\n");
+    printf("<2>Buscar un pedido por el ID.\n");
     printf("<3>Mostrar los datos del pedido buscado por ID.\n");
     printf("<4>Mostrar los pedidos de un mes ordenados por fecha.\n");
     printf("<5>Mostrar los pedidos por nombre.\n");

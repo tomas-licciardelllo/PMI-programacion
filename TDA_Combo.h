@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <string.h>
-#define TAM 10
 
 
 typedef struct{
@@ -13,6 +12,7 @@ typedef struct{
     float precio; //usuario/
     int descuento;
 }Combos;
+
 //Inicializacion
  void inic_combo(Combos *a){
     (*a).id_combo=0;
