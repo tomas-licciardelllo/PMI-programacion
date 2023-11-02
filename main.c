@@ -3,8 +3,7 @@
 #include "lista.h"
 
 
-void modifica_pago(lista_pedido *a, int modif){//incompleta
-/** j) Modificar la forma de pago de un pedido según su idpedido */
+void modifica_pago(lista_pedido *a, int modif){ /** j) Modificar la forma de pago de un pedido según su idpedido */
     Pedido aux;
     ResetCursores(a);
     while(!isOos(a)){
@@ -17,9 +16,6 @@ void modifica_pago(lista_pedido *a, int modif){//incompleta
         ForwardCursores(a);
         }
     }
-    CopyLista()
-    //modifico el nodo
-
 }
 
 void calcular_totales(Pedido *a, Combos todos[])
@@ -178,7 +174,7 @@ void ingresar_pedido(lista_pedido a, Combos cms[])
     InsertarEnLista(&a, aux);
 }
 
-/*int  Busca_pedido(lista_pedido lista){
+/**int  Busca_pedido(lista_pedido lista){
 char id_buscado[11];
 
     do{
