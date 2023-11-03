@@ -3,8 +3,55 @@
 #include "lista.h"
 
 
+<<<<<<< HEAD
 
 void ingresar_pedido(lista_pedido *a, Combos cms[])
+=======
+void modifica_pago(lista_pedido *a, int modif){ /** j) Modificar la forma de pago de un pedido según su idpedido */
+    Pedido aux;
+    ResetCursores(a);
+    while(!isOos(a)){
+        aux=CopyLista(a);
+        if(strcmp(get_id_pedido(aux),modif)==0){
+            SupressLista(a);
+            set_pago(aux, modif)
+            InsertarEnLista(a,aux);
+        }else{
+        ForwardCursores(a);
+        }
+    }
+}
+
+void calcular_totales(Pedido *a, Combos todos[])
+{
+    int cuantos_de_cada;
+    int i;
+    float total_de_los_combos=0, descuentos=0;
+    for(i=0; i<10; i++)
+    {
+         total_de_los_combos=total_de_los_combos+((*a).arreglo_para_combos[i]*get_precio(todos[i]));
+         if(get_descuento(todos[i])==1)
+         {
+             descuentos=descuentos+(((get_precio(todos[i])*(*a).arreglo_para_combos[i])*15)/100);
+         }
+    }
+
+    //solo se calcula el sub total
+
+    (*a).sub_total=total_de_los_combos+descuentos;
+    if((*a).donde_consume==2)
+    {
+        (*a).total=(*a).sub_total+500;
+    }
+    else
+    {
+        (*a).total=(*a).sub_total;
+    }
+}
+
+
+void ingresar_pedido(lista_pedido a, Combos cms[])
+>>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
 
     int i,forma_de_pago, num_de_combo, cantCombos,opcion_de_comer=0, opcion_cargar, opcion_descuento;
@@ -293,7 +340,7 @@ void buscar_ventas_mes(lista_pedido lista, int mes_pedido)
     }
 }
 
-/*int  Busca_pedido(lista_pedido lista){
+/**int  Busca_pedido(lista_pedido lista){
 char id_buscado[11];
 
     do{

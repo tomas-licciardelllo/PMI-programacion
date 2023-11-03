@@ -4,6 +4,7 @@
 	<ActiveTarget name="Debug" />
 	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+<<<<<<< HEAD
 			<Cursor1 position="13516" topLine="378" />
 		</Cursor>
 	</File>
@@ -15,11 +16,28 @@
 	<File name="lista.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2957" topLine="0" />
+=======
+			<Cursor1 position="0" topLine="0" />
+>>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 		</Cursor>
 	</File>
 	<File name="pedido.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+<<<<<<< HEAD
 			<Cursor1 position="4918" topLine="223" />
+=======
+			<Cursor1 position="2103" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1543" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="lista.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="20" />
+>>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
