@@ -118,12 +118,13 @@ int isOos(lista_pedido lista){
 
     if(lista.cursor==NULL)
 
+    {
         return 1; //si cursor apunta fuera de la lista, es porque se salió de estructura(lista)
-
+    }
     else
-
+    {
         return 0;//si apunta a algun nodo o acceso, entonces no está fuera de estructura(lista)
-
+    }
 }
 
 #endif // LISTA_H_INCLUDED

@@ -18,6 +18,7 @@ typedef struct
 {
     char nombre[31];
     char id[11];
+    int cupon;
     //int cuantos_combos;
     //varianle de arriba no posee utilidad teniendo el arreglo
     int forma_pago;
@@ -33,6 +34,7 @@ typedef struct
 void init(Pedido *a)
 {
     int i;
+    (*a).cupon=0;
     (*a).forma_pago=0;
     (*a).sub_total=0;
     (*a).donde_consume=0;
@@ -58,9 +60,33 @@ char generarDigitoAleatorio() {
     return '0' + (rand() % 10);
 }
 
-void set_nombre(Pedido *a, char n[])
+void set_nombre_pedido(Pedido *a, char n[])
 {
     strcpy((*a).nombre, n);
+}
+
+
+void set_vendedor(Pedido *a, int codigo)
+{
+    (*a).vendedor=codigo;
+}
+
+int get_vendedor(Pedido a)
+{
+    return a.vendedor;
+}
+
+char * get_nombre_pedido(Pedido a)
+{
+    char *p;
+    p=(char *)malloc(strlen(a.nombre)+1);
+    if(p==NULL)
+        return ("1");
+    else
+    {
+        strcpy(p,a.nombre);
+        return p;
+    }
 }
 void id(Pedido *a)
 {
@@ -91,33 +117,36 @@ void id(Pedido *a)
 }
 
 
+void set_descuento_pedido(Pedido *a, int opcion)
+{
+    (*a).cupon=opcion;
+}
 
+int get_descuento_pedido(Pedido a)
+{
+    return a.cupon;
+}
 
-void combo(Pedido *a, int cual, int cuantos)
+void set_arreglo_para_combo(Pedido *a, int cual, int cuantos)
 {
     (*a).arreglo_para_combos[cual]=cuantos;
 }
 
-void pago (Pedido *a, int eleccion)
+void set_forma_de_pago (Pedido *a, int eleccion)
 {
     (*a).forma_pago=eleccion;
 }
 
-void subtotal(Pedido *a, float descuento)
+int get_forma_de_pago (Pedido a)
 {
-    int i;
-    Combos uno;
-    for(i=0; i<10; i++)
-    {
-        if((*a).arreglo_para_combos[i]!=0)
-        {
-          (*a).sub_total=(*a).arreglo_para_combos[i]*get_precio(uno);//aca va la funcion que muestra el precio del combo que sale del TDA COMBO;
-        }
-    }
-    (*a).sub_total=(*a).sub_total-descuento;
-}
+    return a.forma_pago;
 
-void total (Pedido *a)
+}
+int get_arreglo_para_combos(Pedido a, int pocision)
+{
+    return a.arreglo_para_combos[pocision];
+}
+void set_total (Pedido *a)
 {
     if((*a).donde_consume==0)
     {
@@ -125,21 +154,49 @@ void total (Pedido *a)
     }
     else
     {
-        (*a).sub_total=(*a).sub_total+500;
+        (*a).total=(*a).sub_total+500;
     }
 }
 
-void set_lugar (Pedido *a, int opcion)
+float get_total(Pedido a)
+{
+    return a.total;
+}
+
+void set_subtotal(Pedido *a, Combos cbs[])
+{
+    int i;
+    float semi_sub_total=0;
+    for(i=0; i<10; i++)
+    {
+        semi_sub_total=semi_sub_total+get_arreglo_para_combos(*a,i)*get_precio(cbs[i]);
+        if(get_descuento_pedido(&a)==1 && get_descuento(cbs[i])==1)
+        {
+            semi_sub_total=semi_sub_total-(semi_sub_total*15)/100;
+        }
+
+    }
+    (*a).sub_total=semi_sub_total;
+}
+
+float get_subtotal(Pedido a)
+{
+    return a.sub_total;
+}
+
+
+
+void set_donde_consume (Pedido *a, int opcion)
 {
     (*a).donde_consume=opcion;
 }
 
-int get_lugar (Pedido a)
+int get_donde_consume(Pedido a)
 {
     return a.donde_consume;
 }
 
-void fecha_del_pedido(Pedido *a)
+void set_fecha_del_pedido(Pedido *a)
 {
 
     time_t tiempoActual;
@@ -154,7 +211,7 @@ void fecha_del_pedido(Pedido *a)
     (*a).fecha_pedido.mes = infoTiempo->tm_mon + 1;  // Sumar 1 porque tm_mon es 0-based
     (*a).fecha_pedido.ano = infoTiempo->tm_year + 1900;  // Sumar 1900 porque tm_year es el número de años desde 1900
 }
-void condicion (Pedido *a, int info)
+void set_entregado(Pedido *a, int info)
 {
     if(info=0)
     {
@@ -165,6 +222,16 @@ void condicion (Pedido *a, int info)
         (*a).entregado=1;
     }
 }
+int get_entregado(Pedido a)
+{
+    return a.entregado;
+}
+
+fecha get_fecha(Pedido a)
+{
+    return a.fecha_pedido;
+}
+
 
 char * get_id_pedido (Pedido a)
 {
