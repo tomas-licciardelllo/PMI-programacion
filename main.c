@@ -3,18 +3,15 @@
 #include "lista.h"
 
 
-<<<<<<< HEAD
 
-void ingresar_pedido(lista_pedido *a, Combos cms[])
-=======
 void modifica_pago(lista_pedido *a, int modif){ /** j) Modificar la forma de pago de un pedido según su idpedido */
     Pedido aux;
     ResetCursores(a);
-    while(!isOos(a)){
-        aux=CopyLista(a);
+    while(!isOos(*a)){
+        aux=CopyLista(*a);
         if(strcmp(get_id_pedido(aux),modif)==0){
             SupressLista(a);
-            set_pago(aux, modif)
+            set_forma_de_pago(&aux, modif);
             InsertarEnLista(a,aux);
         }else{
         ForwardCursores(a);
@@ -22,36 +19,10 @@ void modifica_pago(lista_pedido *a, int modif){ /** j) Modificar la forma de pag
     }
 }
 
-void calcular_totales(Pedido *a, Combos todos[])
-{
-    int cuantos_de_cada;
-    int i;
-    float total_de_los_combos=0, descuentos=0;
-    for(i=0; i<10; i++)
-    {
-         total_de_los_combos=total_de_los_combos+((*a).arreglo_para_combos[i]*get_precio(todos[i]));
-         if(get_descuento(todos[i])==1)
-         {
-             descuentos=descuentos+(((get_precio(todos[i])*(*a).arreglo_para_combos[i])*15)/100);
-         }
-    }
-
-    //solo se calcula el sub total
-
-    (*a).sub_total=total_de_los_combos+descuentos;
-    if((*a).donde_consume==2)
-    {
-        (*a).total=(*a).sub_total+500;
-    }
-    else
-    {
-        (*a).total=(*a).sub_total;
-    }
-}
 
 
-void ingresar_pedido(lista_pedido a, Combos cms[])
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
+void ingresar_pedido(lista_pedido *a, Combos cms[])
+
 {
 
     int i,forma_de_pago, num_de_combo, cantCombos,opcion_de_comer=0, opcion_cargar, opcion_descuento;
@@ -98,8 +69,8 @@ void ingresar_pedido(lista_pedido a, Combos cms[])
                         //control de los numeros ingresados por el usuario
 
                         set_descuento_pedido(&aux, opcion_descuento-1);
-                        printf("Ingrese la cantidad de combos.\n");
 
+                        printf("Ingrese la cantidad de combos.\n");
                         do{
                                 scanf("%d", &cantCombos);
                                 if(cantCombos<0)
@@ -222,8 +193,8 @@ void mostrar_lista(lista_pedido lista)
                     }
             }
         }
-        printf("El subtotal es: $%0.2f", get_subtotal(aux));
-        printf("EL total es: $%0.2f", get_total(aux));
+        printf("El subtotal es: $%0.2f\n", get_subtotal(aux));
+        printf("EL total es: $%0.2f\n", get_total(aux));
         if(get_donde_consume(aux)==1)
         {
             printf("Delivery\n");
@@ -319,7 +290,7 @@ void buscar_ventas_mes(lista_pedido lista, int mes_pedido)
                 {
                     if(get_arreglo_para_combos(arreglo_aux[i],k)!=0)
                     {
-                            printf("Pidio el combo %i: %i unidades\n", k+1,get_arreglo_para_combos(arreglo_aux[i]));
+                            printf("Pidio el combo %i: %i unidades\n", k+1,get_arreglo_para_combos(arreglo_aux[i],i));
                     }
                 }
                 printf("El subtotal es: $%0.2f \n", get_subtotal(arreglo_aux[i]));
@@ -340,27 +311,18 @@ void buscar_ventas_mes(lista_pedido lista, int mes_pedido)
     }
 }
 
-/**int  Busca_pedido(lista_pedido lista){
-char id_buscado[11];
 
+int  Busca_pedido(lista_pedido lista, char id_buscado[]){
+
+    Pedido var_pedido;
+    ResetCursores(&lista);
     do{
-        printf("Ingrese el id para verificar y buscar el pedido\n:");
-        gets(id_buscado);
-
-            if (id_buscado<11){
-                printf("Porfavor ingrese un id valido para buscar el pedido.\n");
-            }
-    }
-    while(strlen(id_buscado)<11);
-
-ResetCursores(&lista);
-
-    do{
+        var_pedido=CopyLista(lista);
         ForwardCursores(&lista);
     }
-    while(strcmp(CopyLista(lista).id,id_buscado)!=0 || isOos(lista)==1);
+    while(strcmp(get_id_pedido(var_pedido),id_buscado)!=0 || isOos(lista)==0);
 
-    if(CopyLista(lista).id==id_buscado && isOos(lista)==0)
+    if(strcmp(get_id_pedido(var_pedido),id_buscado)==0)
     {
         return 1;
     }
@@ -368,10 +330,58 @@ ResetCursores(&lista);
     {
         return 0;
     }
-}*/
+}
 
+//Mostrar Pedido de id buscado
+void MostrarPedido_id(lista_pedido lista, char id_busqueda[])
+{
+    Pedido var_pedido;
 
+    Busca_pedido(lista, id_busqueda);
 
+    var_pedido=CopyLista(lista);
+
+    printf("El nombre del clinte es:%s\n",get_nombre_pedido(var_pedido));
+    printf("El id del pedido es: %s \n", get_id_pedido(var_pedido));
+
+    if(get_forma_de_pago(var_pedido)==1)
+                    {
+                        printf("El forma de pago es efectivo.\n");
+                    }
+                    else
+                    {
+                        if(get_forma_de_pago(var_pedido)==2)
+                        {
+                            printf("El forma de pago es debito.\n");
+                        }
+                        else
+                        {
+                                if(get_forma_de_pago(var_pedido)==3)
+                                {
+                                    printf("El forma de pago es QR.\n");
+                                }
+                                else
+                                {
+                                    if(get_forma_de_pago(var_pedido)==4)
+                                    {
+                                         printf("El forma de pago es QR.\n");
+
+                                    }
+                                }
+                        }
+                    }
+    if(get_donde_consume(var_pedido)==0)
+    {
+        printf("Consume en el establecimiento.\n");
+    }
+    else
+    {
+        printf("Delivery\n");
+    }
+    printf("El sub total es: $%0.2f\n",get_subtotal(var_pedido));
+    printf("El total es:$%0.2f \n",get_total(var_pedido));
+    printf("Fecha %i/%i/%i. \n", get_fecha(var_pedido).dia, get_fecha(var_pedido).mes, get_fecha(var_pedido).ano);
+}
 
 void iniciar_combos(Combos opciones_combo[]){
     int i;
@@ -404,8 +414,8 @@ int main()
     Combos arreglo_combos[10];
     iniciar_combos(arreglo_combos);
     InicializarLista(&la_lista);
-    int opcion;
-
+    int opcion, nueva_opcion_de_pago;
+    char id_buscado[11];
     do{
     printf("------------------Menu---------------------------\n");
     printf("<1>Ingresar un pedido.\n");
@@ -437,10 +447,37 @@ int main()
         break;
 
         case 2:
-                //Busca_pedido();
+
+            printf("Ingrese el id que esta buscando.\n");
+            getchar();
+            gets(id_buscado);
+            Busca_pedido(la_lista, id_buscado);
+            if(Busca_pedido(la_lista, id_buscado)==1)
+            {
+                printf("El pedido esta en la lista.\n");
+            }
+            else
+            {
+                printf("El pedido no esta en la lista.\n");
+            }
+        break;
+        case 3:
+            printf("Ingrese el id que esta buscando.\n");
+            getchar();
+            gets(id_buscado);
+            MostrarPedido_id(la_lista, id_buscado);
         break;
         case 4:
             buscar_ventas_mes(la_lista, 11);
+        break;
+        case 9:
+            printf("Ingrese la nueva forma de pago que quiere ingresar.\n");
+            printf("<1>Para efectivo.\n");
+            printf("<2>Para debito.\n");
+            printf("<3>Para QR\n");
+            printf("<4>Para credito.\n");
+            scanf("%i", nueva_opcion_de_pago);
+            modifica_pago(&la_lista, nueva_opcion_de_pago);
         break;
         case 21:
             mostrar_lista(la_lista);

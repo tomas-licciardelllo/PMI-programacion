@@ -63,18 +63,14 @@ char generarDigitoAleatorio() {
     return '0' + (rand() % 10);
 }
 
-<<<<<<< HEAD
-void set_nombre_pedido(Pedido *a, char n[])
-=======
 
-void set_nombre(Pedido *a, char n[])
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
+void set_nombre_pedido(Pedido *a, char n[])
 {
     strcpy((*a).nombre, n);
 }
 
 
-<<<<<<< HEAD
+
 void set_vendedor(Pedido *a, int codigo)
 {
     (*a).vendedor=codigo;
@@ -97,8 +93,7 @@ char * get_nombre_pedido(Pedido a)
         return p;
     }
 }
-=======
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
+
 void id(Pedido *a)
 {
     int i;
@@ -128,61 +123,38 @@ void id(Pedido *a)
 }
 
 
-<<<<<<< HEAD
+
 void set_descuento_pedido(Pedido *a, int opcion)
 {
     (*a).cupon=opcion;
 }
-=======
-<<<<<<< HEAD
-=======
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 
 int get_descuento_pedido(Pedido a)
 {
     return a.cupon;
 }
 
-<<<<<<< HEAD
 void set_arreglo_para_combo(Pedido *a, int cual, int cuantos)
-=======
->>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
-void combo(Pedido *a, int cual, int cuantos)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
     (*a).arreglo_para_combos[cual]=cuantos;
 }
 
-<<<<<<< HEAD
 void set_forma_de_pago (Pedido *a, int eleccion)
-=======
-
-void set_pago(Pedido *a, int eleccion)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
     (*a).forma_pago=eleccion;
 }
 
-<<<<<<< HEAD
-int get_forma_de_pago (Pedido a)
-=======
 
-void subtotal(Pedido *a, float descuento)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
+int get_forma_de_pago (Pedido a)
 {
     return a.forma_pago;
 
-<<<<<<< HEAD
 }
 int get_arreglo_para_combos(Pedido a, int pocision)
 {
     return a.arreglo_para_combos[pocision];
 }
 void set_total (Pedido *a)
-=======
-
-void total (Pedido *a)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
     if((*a).donde_consume==0)
     {
@@ -194,7 +166,7 @@ void total (Pedido *a)
     }
 }
 
-<<<<<<< HEAD
+
 float get_total(Pedido a)
 {
     return a.total;
@@ -207,9 +179,9 @@ void set_subtotal(Pedido *a, Combos cbs[])
     for(i=0; i<10; i++)
     {
         semi_sub_total=semi_sub_total+get_arreglo_para_combos(*a,i)*get_precio(cbs[i]);
-        if(get_descuento_pedido(&a)==1 && get_descuento(cbs[i])==1)
+        if((*a).cupon==1 && get_descuento(cbs[i])==1 && get_arreglo_para_combos(*a,i)>0)
         {
-            semi_sub_total=semi_sub_total-(semi_sub_total*15)/100;
+            semi_sub_total=semi_sub_total-(semi_sub_total*0.15);
         }
 
     }
@@ -224,29 +196,22 @@ float get_subtotal(Pedido a)
 
 
 void set_donde_consume (Pedido *a, int opcion)
-=======
-<<<<<<< HEAD
-
-void lugar (Pedido *a, int opcion)
-=======
-void set_lugar (Pedido *a, int opcion)
->>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
     (*a).donde_consume=opcion;
 }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 int get_donde_consume(Pedido a)
-=======
-<<<<<<< HEAD
-=======
+{
+
+    return a.donde_consume;
+}
 int get_lugar (Pedido a)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
+
 {
     return a.donde_consume;
 }
->>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
+//>>>>>>> e0bd152b62a6efef8e77b90bb085a2d3d0ec8505
 
 void set_fecha_del_pedido(Pedido *a)
 {
@@ -263,13 +228,9 @@ void set_fecha_del_pedido(Pedido *a)
     (*a).fecha_pedido.mes = infoTiempo->tm_mon + 1;  // Sumar 1 porque tm_mon es 0-based
     (*a).fecha_pedido.ano = infoTiempo->tm_year + 1900;  // Sumar 1900 porque tm_year es el número de años desde 1900
 }
-<<<<<<< HEAD
+
+
 void set_entregado(Pedido *a, int info)
-=======
-
-
-void condicion (Pedido *a, int info)
->>>>>>> b58f9e17b7f0872e07cd083917accfc3a456580d
 {
     if(info=0)
     {
