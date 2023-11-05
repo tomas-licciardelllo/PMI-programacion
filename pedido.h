@@ -136,7 +136,7 @@ int get_descuento_pedido(Pedido a)
 
 void set_arreglo_para_combo(Pedido *a, int cual, int cuantos)
 {
-    (*a).arreglo_para_combos[cual]=cuantos;
+    (*a).arreglo_para_combos[cual]=(*a).arreglo_para_combos[cual]+cuantos;
 }
 
 void set_forma_de_pago (Pedido *a, int eleccion)

@@ -52,20 +52,19 @@ void InsertarEnLista(lista_pedido *lista, Pedido p){
 }
 
 
-
 void SupressLista(lista_pedido *lista){
 
     if(lista->cursor == lista->acceso){
 
         lista->acceso=(lista->cursor)->punterosiguiente;
-        free(lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR //seria necesario
+        free((void *)lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR //seria necesario
         lista->cursor=lista->acceso;
         lista->aux=lista->acceso;
      }
      else{//caso lista->cursor!= lista->acceso
 
         (lista->aux)->punterosiguiente=(lista->cursor)->punterosiguiente;
-        free(lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR
+        free((void *)lista->cursor);//LIBERO MEMORIA DEL NODO QUE QUIERO BORRAR
         lista->cursor=(lista->aux)->punterosiguiente;
 
      }

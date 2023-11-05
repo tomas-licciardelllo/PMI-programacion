@@ -4,18 +4,19 @@
 
 
 
-void modifica_pago(lista_pedido *a, int modif){ /** j) Modificar la forma de pago de un pedido según su idpedido */
+void modifica_pago(lista_pedido a, int modif, char id_buscado[])
+{ /** j) Modificar la forma de pago de un pedido según su idpedido */
     Pedido aux;
-    ResetCursores(a);
-    while(!isOos(*a)){
-        aux=CopyLista(*a);
-        if(strcmp(get_id_pedido(aux),modif)==0){
-            SupressLista(a);
+    ResetCursores(&a);
+    while(isOos(a)==0){
+        aux=CopyLista(a);
+        if(strcmp(get_id_pedido(aux),id_buscado)==0)
+        {
+            SupressLista(&a);
             set_forma_de_pago(&aux, modif);
-            InsertarEnLista(a,aux);
-        }else{
-        ForwardCursores(a);
+            InsertarEnLista(&a,aux);
         }
+        ForwardCursores(&a);
     }
 }
 
@@ -156,7 +157,116 @@ void ingresar_pedido(lista_pedido *a, Combos cms[])
     InsertarEnLista(a, aux);
 }
 
+void eliminar_pedido_por_id(lista_pedido a, char id_buscado[])
+{
+    int i;
+    FILE *puntero_archivo;
+    puntero_archivo=fopen("pedidoseliminados.txt", "w");
 
+    Pedido aux;
+    ResetCursores(&a);
+    while(isOos(a)==0)
+    {
+        printf("ENTRA\n");
+        aux=CopyLista(a);
+        if(strcmp(get_id_pedido(aux),id_buscado)==0)
+        {
+            SupressLista(&a);
+            fprintf(puntero_archivo, "Codigo %s.\n", get_id_pedido(aux));
+            printf("ENTRA\n");
+            fprintf(puntero_archivo, "Nombre: %s.\n", get_nombre_pedido(aux));
+            if(get_id_pedido(aux)==1)
+            {
+                fprintf(puntero_archivo, "La forma de pago es efectivo\.n");
+            }
+            else
+            {
+                if(get_id_pedido(aux)==2)
+                {
+                    fprintf(puntero_archivo, "La forma de pago es debito.\n");
+                }
+                else
+                {
+                    if(get_id_pedido(aux)==3)
+                    {
+                        fprintf(puntero_archivo, "La forma de pago es QR.\n");
+                    }
+                    else
+                    {
+                        if(get_id_pedido(aux)==4)
+                        {
+                            fprintf(puntero_archivo, "La forma de pago es credito.\n");
+                        }
+                    }
+                }
+            }
+
+            printf("ENTRA\n");
+            fprintf(puntero_archivo, "El subtotal: $%0.2f\n", get_subtotal(aux));
+            fprintf(puntero_archivo, "El total es: $%0.2f \n", get_total(aux));
+            if(get_donde_consume(aux)==0)
+            {
+                fprintf(puntero_archivo, "Delivery\n");
+            }
+            else
+            {
+                fprintf(puntero_archivo, "Consume en el establecimiento.\n");
+            }
+            fprintf(puntero_archivo, "La fecha de la compra %i/%i/%i. \n", get_fecha(aux).dia, get_fecha(aux).mes, get_fecha(aux).ano );
+            for(i=0; i<10; i++)
+            {
+                fprintf(puntero_archivo, "Pidio el combo %i %i unidades.\n", i+1 ,get_arreglo_para_combos(aux,i));
+            }
+
+            printf("ENTRA\n");
+            fclose(puntero_archivo);
+
+        }
+        printf("AJJAJAJJAJ");
+        ForwardCursores(&a);
+    }
+}
+
+
+void mostrar_todos_los_combos(Combos cms[])
+{
+    int i;
+    for(i=0; i<10; i++)
+    {
+        printf("Combo %i \n", get_id_combo(cms[i])+1);
+        printf("%s\n", get_descipcion(cms[i]));
+        printf("Stock %i\n", get_stock(cms[i]));
+        printf("Precio $%0.2f\n", get_precio(cms[i]));
+        if(get_descuento(cms[i])==1)
+        {
+            printf("Posee descuento.\n");
+        }
+        else
+        {
+            printf("No posee descuento.\n");
+        }
+
+    }
+}
+
+void modificar_precio_stock_combo(Combos cms[], int id_buscado)
+{
+    int i;
+    float nuevo_precio;
+    int nuevo_stock;
+    for(i=0; i<10; i++)
+    {
+        if(get_id_combo(cms[i])==id_buscado-1)
+        {
+            printf("Ingrese el nuevo precio a ingresar.\n");
+            scanf("%f", &nuevo_precio);
+            set_precio(&cms[i], nuevo_precio);
+            printf("Ingrese la nueva cantidad del stock del combo.\n");
+            scanf("%i", &nuevo_stock);
+            set_stock(&cms[i], nuevo_stock);;
+        }
+    }
+}
 void mostrar_lista(lista_pedido lista)
 {
     Pedido aux;
@@ -208,14 +318,52 @@ void mostrar_lista(lista_pedido lista)
         {
             printf("Pidio el combo %i %i unidades.\n", i+1 ,get_arreglo_para_combos(aux,i));
         }
+        if(get_entregado(aux)==1)
+        {
+            printf("El pedido esta entregado.\n");
+        }
+        else
+        {
+            printf("El pedido no esta entregado.\n");
+        }
         ForwardCursores(&lista);
     }
 }
 
+void modificar_condicion (lista_pedido a, char id_buscado[])
+{
+    Pedido aux;
+    ResetCursores(&a);
+    while(isOos(a)==0)
+    {
+        aux=CopyLista(a);
+        if(strcmp(get_id_pedido(aux), id_buscado)==0)
+        {
+            SupressLista(&a);
+            set_entregado(&aux, 1);
+            InsertarEnLista(&a,aux);
+        }
+        ForwardCursores(&a);
+    }
+
+}
 
 
-
-
+void modificar_nombre(lista_pedido a, char nombre_cambio[], char id_buscado[])
+{
+    Pedido aux;
+    ResetCursores(&a);
+    while(isOos(a)==0){
+        aux=CopyLista(a);
+        if(strcmp(get_id_pedido(aux),id_buscado)==0)
+        {
+            SupressLista(&a);
+            set_nombre_pedido(&aux, nombre_cambio);
+            InsertarEnLista(&a,aux);
+        }
+        ForwardCursores(&a);
+    }
+}
 
 void buscar_ventas_mes(lista_pedido lista, int mes_pedido)
 {
@@ -414,8 +562,8 @@ int main()
     Combos arreglo_combos[10];
     iniciar_combos(arreglo_combos);
     InicializarLista(&la_lista);
-    int opcion, nueva_opcion_de_pago;
-    char id_buscado[11];
+    int opcion, nueva_opcion_de_pago, id_opcion_17;
+    char id_buscado[11], id_buscado_opcion_9[11], id_buscado_opcion_8[11], id_pedido_opcion_10[10], nombre_opcion_10[11], id_pedido_opcion_11[11];
     do{
     printf("------------------Menu---------------------------\n");
     printf("<1>Ingresar un pedido.\n");
@@ -445,7 +593,6 @@ int main()
         case 1:
             ingresar_pedido(&la_lista, arreglo_combos);
         break;
-
         case 2:
 
             printf("Ingrese el id que esta buscando.\n");
@@ -470,20 +617,52 @@ int main()
         case 4:
             buscar_ventas_mes(la_lista, 11);
         break;
+        case 8:
+            printf("Ingrese el id que esta buscando.\n");
+            getchar();
+            gets(id_buscado_opcion_8);
+            modificar_condicion(la_lista, id_buscado_opcion_8);
+        break;
         case 9:
+            printf("Ingrese el id del pedido buscado.\n");
+            getchar();
+            gets(id_buscado_opcion_9);
             printf("Ingrese la nueva forma de pago que quiere ingresar.\n");
             printf("<1>Para efectivo.\n");
             printf("<2>Para debito.\n");
             printf("<3>Para QR\n");
             printf("<4>Para credito.\n");
-            scanf("%i", nueva_opcion_de_pago);
-            modifica_pago(&la_lista, nueva_opcion_de_pago);
+            scanf("%i", &nueva_opcion_de_pago);
+            modifica_pago(la_lista, nueva_opcion_de_pago, id_buscado_opcion_9);
+        break;
+        case 10:
+            printf("Ingrese el id del pedido buscado.\n");
+            getchar();
+            gets(id_pedido_opcion_10);
+            printf("Ingrese el nuevo nombre que quiere ingressar.\n");
+            getchar();
+            gets(nombre_opcion_10);
+            modificar_nombre(la_lista,nombre_opcion_10, id_pedido_opcion_10);
+        break;
+        case 11:
+            printf("Ingrese el id del pedido que quiere eliminar.\n");
+            getchar();
+            gets(id_pedido_opcion_11);
+            eliminar_pedido_por_id(la_lista, id_pedido_opcion_11);
+        break;
+        case 15:
+            printf("Ingrese el id del combo que quiere modificar.\n");
+            scanf("%i", &id_opcion_17);
+            modificar_precio_stock_combo(arreglo_combos,id_opcion_17);
+        break;
+        case 16:
+            mostrar_todos_los_combos(arreglo_combos);
         break;
         case 21:
             mostrar_lista(la_lista);
         break;
 
     };
-    }while(opcion<=20 && opcion>=1);
+    }while(opcion<=21 && opcion>=1);
     return 0;
 }
