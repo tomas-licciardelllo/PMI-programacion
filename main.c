@@ -2,6 +2,50 @@
 #include <time.h>
 #include "lista.h"
 
+//Buscar pedido por id
+
+
+int  Busca_pedido(lista_pedido lista){
+char id_buscado[11];
+Pedido var_pedido;
+    ResetCursores(&lista);
+    var_pedido=CopyLista(lista);
+    do{
+
+    ForwardCursores(&lista);
+
+    }
+    while(strcmp(get_id_pedido(var_pedido),id_buscado)!=0 || isOos(lista)==1);
+
+    if(strcmp(get_id_pedido(var_pedido),id_buscado)==0 && isOos(lista)==0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
+
+
+//Mostrar Pedido de id buscado
+void MostrarPedido_id(lista_pedido lista){
+Pedido var_pedido;
+Busca_pedido(lista);
+
+CopyLista(var_pedido);
+
+printf("El nombre del pedido es:%s\n",get_nombre(var_pedido));
+printf("El id del pedido es:%s\n",get_id_pedido(var_pedido));
+printf("La forma de pago es:%d\n",get_fecha(var_pedido));
+printf("El sub total es:%d\n",get_subtotal(var_pedido));
+printf("El pedido es:\n",get_dondeconsume(var_pedido));
+printf("El total es:\n",get_total(var_pedido));
+printf("La fecha del pedido",get_fecha(var_pedido));
+
+}
 
 
 void modifica_pago(lista_pedido a, int modif, char id_buscado[])
