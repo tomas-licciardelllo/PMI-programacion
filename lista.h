@@ -90,7 +90,7 @@ int isEmpty(lista_pedido lista){
 
 }
 
-int isFull(void){
+int isFull(lista_pedido a){
 
     Nodo *NuevoNodo;
     NuevoNodo=(Nodo*)malloc(sizeof(Nodo));

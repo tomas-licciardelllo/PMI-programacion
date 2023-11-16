@@ -19,22 +19,22 @@
 	<malloc.h>
 	<string.h>
 
-1699154545 source:c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\main.c
+1699994840 source:c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\main.c
 	<stdio.h>
 	<time.h>
 	"lista.h"
 
-1699154563 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\lista.h
+1699995052 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\lista.h
 	"pedido.h"
 
-1699129056 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\pedido.h
+1699995062 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\pedido.h
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"TDA_Combo.h"
 
-1699038551 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\tda_combo.h
+1699914709 c:\users\tomil\onedrive\escritorio\programacion 1\practico maquina integrador\tda_combo.h
 	<stdio.h>
 	<malloc.h>
 	<string.h>

@@ -1,9 +1,11 @@
-Codigo 3csnjumlc6.
+
+Codigo 9ytbahskp6.
 Nombre: tomas.
+La forma de pago es debito.
 El subtotal: $2100.00
 El total es: $2600.00 
 Consume en el establecimiento.
-La fecha de la compra 5/11/2023. 
+La fecha de la compra 13/11/2023. 
 Pidio el combo 1 0 unidades.
 Pidio el combo 2 2 unidades.
 Pidio el combo 3 0 unidades.
@@ -14,3 +16,73 @@ Pidio el combo 7 0 unidades.
 Pidio el combo 8 0 unidades.
 Pidio el combo 9 0 unidades.
 Pidio el combo 10 0 unidades.
+Codigo 8myvsiqqf9.
+Nombre: tadeo.
+La forma de pago es debito.
+El subtotal: $2400.00
+El total es: $2900.00 
+Consume en el establecimiento.
+La fecha de la compra 14/11/2023. 
+Pidio el combo 1 2 unidades.
+Pidio el combo 2 0 unidades.
+Pidio el combo 3 0 unidades.
+Pidio el combo 4 0 unidades.
+Pidio el combo 5 0 unidades.
+Pidio el combo 6 0 unidades.
+Pidio el combo 7 0 unidades.
+Pidio el combo 8 0 unidades.
+Pidio el combo 9 0 unidades.
+Pidio el combo 10 0 unidades.
+Codigo 1ozagzpfv8.
+Nombre: tomas.
+La forma de pago es debito.
+El subtotal: $2400.00
+El total es: $2900.00 
+Consume en el establecimiento.
+La fecha de la compra 14/11/2023. 
+Pidio el combo 1 2 unidades.
+Pidio el combo 2 0 unidades.
+Pidio el combo 3 0 unidades.
+Pidio el combo 4 0 unidades.
+Pidio el combo 5 0 unidades.
+Pidio el combo 6 0 unidades.
+Pidio el combo 7 0 unidades.
+Pidio el combo 8 0 unidades.
+Pidio el combo 9 0 unidades.
+Pidio el combo 10 0 unidades.
+Codigo 1qbnozlkt5.
+Nombre: tomas.
+La forma de pago es debito.
+El subtotal: $2100.00
+El total es: $2600.00 
+Consume en el establecimiento.
+La fecha de la compra 14/11/2023. 
+Pidio el combo 1 0 unidades.
+Pidio el combo 2 2 unidades.
+Pidio el combo 3 0 unidades.
+Pidio el combo 4 0 unidades.
+Pidio el combo 5 0 unidades.
+Pidio el combo 6 0 unidades.
+Pidio el combo 7 0 unidades.
+Pidio el combo 8 0 unidades.
+Pidio el combo 9 0 unidades.
+Pidio el combo 10 0 unidades.
+
+Codigo 1krordhwz7.
+Nombre: gabi.
+La forma de pago es QR.
+El subtotal: $9600.00
+El total es: $10100.00 
+Consume en el establecimiento.
+La fecha de la compra 14/11/2023. 
+Pidio el combo 1 8 unidades.
+Pidio el combo 2 0 unidades.
+Pidio el combo 3 0 unidades.
+Pidio el combo 4 0 unidades.
+Pidio el combo 5 0 unidades.
+Pidio el combo 6 0 unidades.
+Pidio el combo 7 0 unidades.
+Pidio el combo 8 0 unidades.
+Pidio el combo 9 0 unidades.
+Pidio el combo 10 0 unidades.
+

@@ -32,6 +32,7 @@ void set_descripcion(Combos *a, char *desc){
 }
 
 void set_stock(Combos *a, int st){
+
     (*a).stock=st;
 }
 
